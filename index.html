@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Important Question ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    width: 400px;
+    height: 380px;
+    overflow: hidden;
+}
+
+h1 {
+    color: #e91e63;
+    margin-bottom: 40px;
+    font-size: 28px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+button {
+    font-size: 18px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    position: absolute;
+    font-weight: 600;
+}
+
+#yes {
+    background-color: #e91e63;
+    color: white;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#no {
+    background-color: #ccc;
+    color: black;
+    top: 160px;
+    left: 140px;
+}
+
+.tooltip {
+    position: absolute;
+    background: #e91e63;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    display: none;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Marina ..<br>Will you be my Valentine? <3</h1>
+
+    <button id="yes">Yes 😍</button>
+    <button id="no">No 🙈</button>
+
+    <div class="tooltip" id="tooltip"></div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const tooltip = document.getElementById("tooltip");
+const container = document.querySelector('.container');
+
+const messages = [
+    "Oops 😅 try again!",
+    "You can’t resist me 😍",
+    "Not so fast! 😜",
+    "Try harder! 😏",
+    "Come on! ❤️"
+];
+
+function moveNoBtn() {
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    tooltip.innerText = messages[Math.floor(Math.random()*messages.length)];
+    tooltip.style.left = (x + 10) + "px";
+    tooltip.style.top = (y - 30) + "px";
+    tooltip.style.display = "block";
+    setTimeout(() => { tooltip.style.display = "none"; }, 1000);
+}
+
+noBtn.addEventListener("mouseover", moveNoBtn);
+
+// عند الضغط على Yes → الانتقال لصفحة الاحتفال
+yesBtn.addEventListener("click", () => {
+    window.location.href = "yes-page.html";
+});
+</script>
+
+</body>
+</html>

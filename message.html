@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Special Message 💌</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.message-container {
+    font-size: 28px;
+    color: #fff;
+    max-width: 80%;
+    text-align: center;
+    white-space: pre-wrap;
+    border-right: 3px solid #fff;
+    padding-right: 5px;
+    line-height: 1.5;
+    z-index:10;
+    text-shadow: 0 0 10px #e91e63;
+}
+</style>
+</head>
+<body>
+
+<div class="message-container" id="messageContainer"></div>
+
+<!-- الموسيقى -->
+<audio id="bgMusic" src="assets/song.mp3" autoplay loop></audio>
+
+<script>
+const message = `Dear Marina ❤️,
+
+I want you to know how much you mean to me.
+Every moment with you is magical, and I can't wait for our future together.
+You are my sunshine, my joy, my everything.
+Will you be mine forever? 💖
+
+Love always,
+[koko]`;
+
+const container = document.getElementById("messageContainer");
+let index = 0;
+
+function typeWriter() {
+    if(index < message.length) {
+        container.innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 50);
+    }
+}
+
+typeWriter();
+
+const music = document.getElementById("bgMusic");
+music.volume = 0.3;
+music.play().catch(() => { console.log("User interaction required to play music."); });
+</script>
+
+</body>
+</html>

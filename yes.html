@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Best Decision Ever 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing: border-box; }
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.bg-image {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/your-image.jpg') center center/cover no-repeat;
+    opacity: 0.25;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 42px;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    text-shadow: 
+        0 0 10px #fff,
+        0 0 20px #ff4081,
+        0 0 30px #e91e63,
+        0 0 40px #ff4081;
+    animation: glow 1.5s ease-in-out infinite alternate;
+    position: relative;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff4081, 0 0 30px #e91e63, 0 0 40px #ff4081; }
+    100% { text-shadow: 0 0 20px #fff, 0 0 30px #ff4081, 0 0 40px #e91e63, 0 0 50px #ff4081; }
+}
+
+.confetti {
+    position: absolute;
+    font-size: 18px;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity:1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity:0; }
+}
+
+#seeMessage {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background-color: #e91e63;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#seeMessage:hover {
+    background-color: #ff4081;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<h1>The Best Decision Ever 🎉</h1>
+
+<button id="seeMessage">See Your Message</button>
+
+<script>
+const colors = ["#e91e63","#ff4081","#ffeb3b","#00e676","#2196f3","#ff5722","#9c27b0"];
+const shapes = ["❤️","💖","🌟"];
+
+function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.innerHTML = shapes[Math.floor(Math.random()*shapes.length)];
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    const size = 12 + Math.random()*18;
+    confetti.style.fontSize = size + "px";
+    confetti.style.color = colors[Math.floor(Math.random()*colors.length)];
+    confetti.style.animationDuration = (3 + Math.random()*4) + 's';
+    confetti.style.opacity = Math.random();
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 7000);
+}
+
+setInterval(createConfetti, 150);
+
+document.getElementById("seeMessage").addEventListener("click", () => {
+    window.location.href = "message-page.html";
+});
+</script>
+
+</body>
+</html>
